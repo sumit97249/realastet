@@ -1,0 +1,91 @@
+<div class="row">
+  <!-- site Analytics card start -->
+  <div class="col-xl-3 col-md-6 ">
+    <app-card [hidHeader]="true">
+      <h3>20500</h3>
+      <p class="text-muted">Site Analysis</p>
+      <app-apex-chart chartID="seo-chart-1" [chartConfig]="seoChartData1"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-xl-3 col-md-6">
+    <app-card [hidHeader]="true">
+      <h3>20500</h3>
+      <p class="text-muted">Total Panding</p>
+      <app-apex-chart chartID="seo-chart-2" [chartConfig]="seoChartData2"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-xl-3 col-md-6 ">
+    <app-card [hidHeader]="true">
+      <h3>28000</h3>
+      <p class="text-muted">Total Sales</p>
+      <app-apex-chart chartID="seo-chart-3" [chartConfig]="seoChartData3"></app-apex-chart>
+    </app-card>
+  </div>
+  <div class="col-xl-3 col-md-6 ">
+    <app-card [hidHeader]="true">
+      <h3>59600</h3>
+      <p class="text-muted">Total Visits </p>
+      <app-apex-chart chartID="seo-chart-4" [chartConfig]="seoChartData4"></app-apex-chart>
+    </app-card>
+  </div>
+</div>
+<div class="row">
+  <div class=" col-md-4">
+    <app-card cardTitle="To Do List" [options]="false">
+      <form #form="ngForm">
+        <div class="input-group mb-3">
+          <input type="text" ngModel autocomplete="off" name="task" class="form-control add_task_todo"
+            placeholder="Create your task list" required="" (keyup)="todo_list_message_error = false">
+          <div class="input-group-append">
+            <button class="btn btn-primary" id="add-btn"
+              [ngClass]="{'btn-danger': todo_list_message_error, 'btn-secondary': !todo_list_message_error}"
+              (click)="addTask(form.value)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="new-task">
+
+        <div class="to-do-list mb-4" *ngFor="let todo of todo;">
+          <div class="d-inline-block">
+            <form #task="ngForm">
+              <label
+                class="check-task custom-control custom-checkbox d-flex justify-content-center {{todo.value ? 'done-task':''}}">
+                <input type="checkbox" class="custom-control-input" name="done" [checked]="todo.value"
+                  [ngModelOptions]={standalone:true} (change)="completeTodoList($event,todo.key,todo.task)">
+                <span class="custom-control-label">{{todo.task}}</span>
+              </label>
+            </form>
+          </div>
+          <div class="float-right"><a (click)="delete_todo(todo.key)" class="delete_todolist" ><i
+                class="far fa-trash-alt"></i></a></div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-xl-8 col-md-8">
+    <app-card cardTitle="Today Clients" [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone.No</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of TodayCustomer;index as i" >
+            <tr>
+              <td>{{i+1}}</td>
+              <td>{{item.first_name}}</td>
+              <td>{{item.last_name}}</td>
+              <td>{{item.Phone}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

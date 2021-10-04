@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "realestate-142b9": {
+      "hosting": {
+        "ng-able-pro": [
+          "realestate-142b9"
+        ]
+      }
+    }
+  }
+}

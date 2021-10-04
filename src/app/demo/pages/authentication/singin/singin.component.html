@@ -1,0 +1,38 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body">
+            <img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+            <form #form="ngForm">
+              <h4 class="mb-3 f-w-400">Signin</h4>
+              <div class="input-group mb-5">
+                <input type="email" class="form-control" ngModel name="email" placeholder="Email address">
+              </div>
+              
+              <div class="input-group mb-5">
+                <input class="form-control " type="{{ isActive ? 'password' : 'text' }}"
+                   ngModel name="password" placeholder="Password">
+                <span class="input-group-append bg-white">
+                  <!-- <span class="input-group-text bg-transparent"> -->
+                  <button *ngIf="!isActive" type="checkbox" class="btn" (click)="show()"><i
+                      class="feather icon-eye"></i></button>
+                  <button *ngIf="isActive" type="checkbox" class="btn" (click)="hide()"><i
+                      class="feather icon-eye-off"></i></button>
+
+                  <!-- </span> -->
+                </span>
+              </div>
+
+            </form>
+          <button (click)="singin(form.value)" class="btn btn-block btn-primary mb-4">Signin</button>
+          <!-- <p class="mb-2 text-muted">Forgot password? <a  class="f-w-400">Reset</a></p> -->
+          
+           <!-- <p class="mb-0 text-muted">Don’t have an account?</p><button class="f-w-400 btn btn-link" style="outline: none; border: none; color:black;"  >Signup</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
